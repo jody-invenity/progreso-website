@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Progreso Solutions Consultancy. Fixed-fee consulting for South African SMB owners, built around outcomes you can measure.">
+<title>Progreso Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap">
+<style>
+/* Layout: one long page. Navy gradient hero, proof first, then method, offer, close. Cards and icon circles carry the brand motif. */
+:root{
+  --blue:#0E5FD8; --navy:#0D2B63; --deep:#081A3E; --accent:#58A6FF;
+  --bg:#FFFFFF; --surface:#FFFFFF; --tint:#EAF4FF; --ink:#0B1B3A; --body:#4A5871; --muted:#6B7C99; --rule:#DCE6F5;
+  --link:#0E5FD8; --shadow:rgba(13,43,99,.08);
+  --on-band:#FFFFFF; --on-band-body:#C9DCF7; --on-band-mute:#9CB3D8;
+  --band-a:#0D2B63; --band-b:#081A3E;
+  --display:'Montserrat','Helvetica Neue',Arial,sans-serif; --text:'Inter','Helvetica Neue',Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#07142E; --surface:#0C1F45; --tint:#12306A; --ink:#EAF2FF; --body:#B4C4E0; --muted:#8DA2C6; --rule:#1B3566; --link:#7DB9FF; --shadow:rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#07142E; --surface:#0C1F45; --tint:#12306A; --ink:#EAF2FF; --body:#B4C4E0; --muted:#8DA2C6; --rule:#1B3566; --link:#7DB9FF; --shadow:rgba(0,0,0,.35); color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--body);font-family:var(--text);font-size:16px;line-height:1.6;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{font-family:var(--display);color:var(--ink);margin:0;text-wrap:balance;line-height:1.15}
+p{margin:0}
+a{color:var(--link)}
+.wrap{max-width:1080px;margin:0 auto}
+.band{margin-left:calc(-1 * max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1 * max(16px,env(safe-area-inset-right,0px)));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));background:linear-gradient(135deg,var(--band-a),var(--band-b));color:var(--on-band-body)}
+.band h1,.band h2,.band h3{color:var(--on-band)}
+section{padding-block:72px}
+.eyebrow{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--link);margin-bottom:14px}
+.band .eyebrow{color:var(--accent)}
+.sec-head{display:grid;gap:12px;max-width:720px;margin-bottom:40px}
+.sec-head h2{font-size:clamp(26px,4vw,36px);font-weight:800}
+.sec-head p{font-size:17px}
+.ico{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.circle{width:44px;height:44px;border-radius:50%;background:var(--tint);color:var(--link);display:grid;place-items:center;font-size:20px;flex:none}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:12px;box-shadow:0 2px 10px var(--shadow);padding:22px}
+.pill{display:inline-block;font-family:var(--display);font-weight:700;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;background:var(--tint);color:var(--link);border-radius:999px;padding:5px 10px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:15px;text-decoration:none;border-radius:999px;padding:14px 24px;background:#fff;color:var(--navy);border:0;cursor:pointer}
+.btn:hover{background:var(--tint)}
+.btn:focus-visible,.copy:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+/* Hero */
+.hero{padding-block:28px 72px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:8px 56px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.01em}
+.brand small{display:block;font-weight:600;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--on-band-mute)}
+.toplink{color:var(--on-band-body);font-size:14px;text-decoration:none;font-weight:500}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(30px,5.2vw,52px);font-weight:800;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .sub{font-size:19px;margin-top:22px;max-width:560px}
+.kicker{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-top:26px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:34px}
+.hero-cta span{font-size:14px;color:var(--on-band-mute)}
+.motif{width:100%;max-width:340px;justify-self:end}
+
+/* Proof */
+.rating{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:6px;font-size:14px;color:var(--muted)}
+.stars{display:flex;gap:3px;color:var(--link);font-size:16px}
+.stars .ico{fill:currentColor;stroke-width:1}
+.proof-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.quote{display:flex;flex-direction:column;gap:16px}
+.quote-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.qmark{font-family:var(--display);font-weight:800;font-size:44px;line-height:.8;color:var(--link);height:24px}
+.quote p{font-size:15px;line-height:1.65;color:var(--body);flex:1}
+.who{display:flex;gap:12px;align-items:center;border-top:1px solid var(--rule);padding-top:16px}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--tint);color:var(--link);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:13px;flex:none}
+.who b{display:block;font-family:var(--display);font-size:13.5px;color:var(--ink)}
+.who span{display:block;font-size:12.5px;color:var(--muted);line-height:1.4}
+
+/* Method */
+.method{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.ladder{display:grid;gap:12px}
+.rung{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:18px 20px}
+.rung h4{font-size:15px;font-weight:700}
+.rung p{font-size:14.5px;margin-top:4px}
+.step-list{display:grid;gap:14px;margin-top:6px}
+.step-list div{display:flex;gap:14px;align-items:center;font-size:15px;color:var(--ink);font-weight:500}
+.gate{display:grid;gap:14px}
+.tracks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.track{background:var(--tint);border-radius:10px;padding:14px 16px}
+.track b{display:block;font-family:var(--display);font-size:13px;color:var(--ink)}
+.track span{font-size:13.5px}
+.metrics{display:flex;flex-wrap:wrap;gap:8px}
+
+/* Pain map */
+.pain-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.pain{display:flex;flex-direction:column;gap:12px;padding:20px 18px}
+.pain h3{font-size:15px;font-weight:700}
+.pain p{font-size:14px;flex:1}
+.pain .to{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:700;font-size:12.5px;color:var(--link);border-top:1px solid var(--rule);padding-top:12px}
+
+/* Offer */
+.compass{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;padding:34px;border-radius:14px;margin-bottom:22px}
+.compass .circle{background:rgba(255,255,255,.12);color:#fff;width:52px;height:52px;font-size:24px}
+.compass h3{font-size:26px;font-weight:800;margin:16px 0 10px}
+.compass ul,.node ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.compass li,.node li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px}
+.compass li .ico{color:var(--accent);margin-top:4px}
+.node li .ico{color:var(--link);margin-top:4px}
+.compass .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.compass .meta .pill{background:rgba(255,255,255,.12);color:#fff}
+.node-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.node{display:flex;flex-direction:column;gap:14px}
+.node-top{display:flex;gap:14px;align-items:center}
+.node h3{font-size:19px;font-weight:700}
+.node .focus{font-size:14px;color:var(--muted)}
+.node .for{font-style:italic;font-size:14.5px}
+.node hr{border:0;border-top:1px solid var(--rule);margin:2px 0;width:100%}
+.node .roi{font-size:13px;color:var(--muted)}
+.node .roi b{color:var(--ink);font-family:var(--display);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.alwayson{margin-top:18px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
+.alwayson h3{font-size:19px}
+.alwayson p{font-size:14.5px;margin-top:4px}
+.quoteonly{margin-top:26px;display:flex;gap:14px;align-items:center;background:var(--tint);border-radius:12px;padding:18px 22px;font-size:15px;color:var(--ink)}
+.quoteonly .ico{font-size:22px;color:var(--link)}
+
+/* Difference + steps */
+.diff-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.diff{display:flex;flex-direction:column;gap:12px}
+.diff h3{font-size:16px}
+.diff p{font-size:14.5px}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.step{display:flex;flex-direction:column;gap:12px}
+.step h3{font-size:18px}
+.step p{font-size:14.5px}
+.alt{background:var(--tint);margin-left:calc(-1 * max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1 * max(16px,env(safe-area-inset-right,0px)));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.alt .card{background:var(--surface)}
+
+/* Close */
+.close{padding-block:80px 40px}
+.close-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.close h2{font-size:clamp(28px,4.4vw,42px);font-weight:800}
+.close .lead{font-size:18px;margin-top:18px;max-width:540px}
+.contact{display:grid;gap:14px}
+.crow{display:flex;gap:14px;align-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:14px 16px;min-width:0}
+.crow .ico{color:var(--accent);font-size:20px}
+.crow div{min-width:0;flex:1;font-size:15px;color:#fff;overflow-wrap:anywhere}
+.crow small{display:block;font-family:var(--display);font-weight:700;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-band-mute)}
+.crow a{color:#fff}
+.copy{font-family:var(--display);font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:999px;padding:7px 12px;cursor:pointer}
+.copy:hover{background:rgba(255,255,255,.22)}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14);font-size:13px;color:var(--on-band-mute)}
+
+@media (max-width:900px){
+  .hero-grid,.method,.compass,.close-grid{grid-template-columns:1fr}
+  .motif{justify-self:start;max-width:240px}
+  .proof-grid,.node-grid,.steps{grid-template-columns:1fr}
+  .pain-grid,.diff-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  section{padding-block:56px}
+  .pain-grid,.diff-grid,.tracks{grid-template-columns:1fr}
+  .compass{padding:24px}
+  .alwayson{grid-template-columns:1fr}
+  .topbar{padding-bottom:36px}
+}
+@media (prefers-reduced-motion:no-preference){.btn,.copy{transition:background .15s}}
+</style>
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+    <symbol id="i-buoy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/></symbol>
+    <symbol id="i-shuffle" viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></symbol>
+    <symbol id="i-userx" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="18" y1="8" x2="23" y2="13"/><line x1="23" y1="8" x2="18" y2="13"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+    <symbol id="i-bars" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></symbol>
+    <symbol id="i-usercheck" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+    <symbol id="i-phonecall" viewBox="0 0 24 24"><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94"/><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+  </defs>
+</svg>
+
+<!-- HERO -->
+<header class="band hero">
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="#top" id="top" aria-label="Progreso Solutions Consultancy">
+        <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true"><rect x="4" y="22" width="7" height="12" rx="2" fill="#58A6FF" opacity=".55"/><rect x="15.5" y="14" width="7" height="20" rx="2" fill="#58A6FF" opacity=".8"/><rect x="27" y="4" width="7" height="30" rx="2" fill="#58A6FF"/></svg>
+        <span>Progreso<small>Solutions Consultancy</small></span>
+      </a>
+      <a class="toplink" href="#contact">Contact</a>
+    </div>
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Always keep improving</div>
+        <h1>Most owners work harder every year. Fewer build something that <em>works without them.</em></h1>
+        <p class="sub">Fixed-fee consulting for South African SMB owners. Structured, time-bound, and built around outcomes you can measure.</p>
+        <div class="kicker">Not advice. Delivery.</div>
+        <div class="hero-cta">
+          <a class="btn" href="#contact">Start with a free 30-minute call <svg class="ico" width="18" height="18"><use href="#i-arrow"/></svg></a>
+          <span>Durban based. Remote delivery nationally.</span>
+        </div>
+      </div>
+      <svg class="motif" viewBox="0 0 340 300" role="img" aria-label="Ascending columns with an orbit ring">
+        <circle cx="170" cy="150" r="128" fill="none" stroke="#58A6FF" stroke-opacity=".25" stroke-width="1.5"/>
+        <circle cx="170" cy="150" r="88" fill="none" stroke="#58A6FF" stroke-opacity=".18" stroke-width="1.5"/>
+        <rect x="52" y="190" width="40" height="70" rx="10" fill="#58A6FF" fill-opacity=".30"/>
+        <rect x="112" y="150" width="40" height="110" rx="10" fill="#58A6FF" fill-opacity=".50"/>
+        <rect x="172" y="104" width="40" height="156" rx="10" fill="#58A6FF" fill-opacity=".75"/>
+        <rect x="232" y="46" width="40" height="214" rx="10" fill="#58A6FF"/>
+        <circle cx="252" cy="30" r="9" fill="#fff"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- PROOF -->
+<section id="proof">
+  <div class="sec-head">
+    <div class="eyebrow">What clients and colleagues say</div>
+    <h2>Recommendations from people who have worked with Jody.</h2>
+    <div class="rating">
+      <span class="stars" aria-label="5 out of 5 stars"><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg></span>
+      <span><b style="color:var(--ink)">5 out of 5 on LinkedIn.</b> Recommendations from LinkedIn, verified and unedited.</span>
+    </div>
+  </div>
+  <div class="proof-grid">
+    <article class="card quote">
+      <div class="quote-top"><div class="qmark" aria-hidden="true">“</div><span class="pill">Client · 2025</span></div>
+      <p>What I value is Jo's focused and strategic approach to understand one's business model and company goals. Professional, efficient, with impressive turn-around times, on point feedback, and clear direction to meet objectives.</p>
+      <div class="who"><div class="avatar">MS</div><div><b>Martéz S.</b><span>Talent Agent, Producer &amp; Director</span></div></div>
+    </article>
+    <article class="card quote">
+      <div class="quote-top"><div class="qmark" aria-hidden="true">“</div><span class="pill">Client</span></div>
+      <p>Jody understands the challenges, his customers' business process issues, mapping to a solution that not only delivers what's required but ensures it caters for their future needs. I highly recommend any engagement with this knowledgeable and talented individual.</p>
+      <div class="who"><div class="avatar">MW</div><div><b>Michael W.</b><span>Sales Management / Business Development / GM</span></div></div>
+    </article>
+    <article class="card quote">
+      <div class="quote-top"><div class="qmark" aria-hidden="true">“</div><span class="pill">Client</span></div>
+      <p>Jody is a visionary leader with an exceptional clarity of mind, strategic thinking and attention to details. He ensures to get things done with an uncompromising preciseness. It would be an absolute pleasure working with him anytime.</p>
+      <div class="who"><div class="avatar">AR</div><div><b>Andy R.</b><span>Growth Operator for Startups &amp; Scaleups</span></div></div>
+    </article>
+    <article class="card quote">
+      <div class="quote-top"><div class="qmark" aria-hidden="true">“</div><span class="pill">Consulting colleague</span></div>
+      <p>He immerses himself to the point of converging with the business he engages with to create meaningful and sustainable outcomes. He has achieved much success in enabling strategic objectives by collaborating with stakeholders that contribute to enterprise agility.</p>
+      <div class="who"><div class="avatar">KR</div><div><b>Kashani R.</b><span>Managing Member, Talitha Koumi Consulting</span></div></div>
+    </article>
+    <article class="card quote">
+      <div class="quote-top"><div class="qmark" aria-hidden="true">“</div><span class="pill">Client</span></div>
+      <p>His professionalism is unmatched and he always has fresh insights to share. In working with him, I've seen first hand how much knowledge and passion he has, not only for the industry he works in but for those he deals with too. If you're lucky enough to get the chance to work with Jody, take it.</p>
+      <div class="who"><div class="avatar">BC</div><div><b>Bron C.</b><span>Founder &amp; Content Specialist, Verbosity</span></div></div>
+    </article>
+    <article class="card quote">
+      <div class="quote-top"><div class="qmark" aria-hidden="true">“</div><span class="pill">Colleague</span></div>
+      <p>"Big thinker" is what comes to mind. He has a curious and logical mind, adept at spotting trends and finding innovative solutions to complex problems. Excellent at developing strategies for the future whilst motivating and inspiring those around him.</p>
+      <div class="who"><div class="avatar">KN</div><div><b>Keshika N.</b><span>Loyalty Marketing Manager, Vivo Energy</span></div></div>
+    </article>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section id="method" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">How the work is done</div>
+      <h2>Every engagement starts with a diagnosis, not an opinion.</h2>
+      <p>Before anything is recommended, the numbers and the people are examined in a fixed sequence. The same method runs behind every engagement.</p>
+    </div>
+    <div class="method">
+      <div class="card gate">
+        <div class="circle"><svg class="ico"><use href="#i-filter"/></svg></div>
+        <h3 style="font-size:20px">A financial viability gate comes first</h3>
+        <p style="font-size:15px">Three measures decide whether your business needs to stabilise before it grows.</p>
+        <div class="metrics"><span class="pill">Cash runway</span><span class="pill">DSO vs DPO trends</span><span class="pill">Gross margin</span></div>
+        <div class="tracks">
+          <div class="track"><b>Stabilization Track</b><span>Fix the leaks and protect cash first.</span></div>
+          <div class="track"><b>Growth Track</b><span>The base is sound, so build on it.</span></div>
+        </div>
+        <div class="step-list" style="margin-top:12px">
+          <div><div class="circle" style="width:36px;height:36px;font-size:17px"><svg class="ico"><use href="#i-chat"/></svg></div>Stakeholder interviews</div>
+          <div><div class="circle" style="width:36px;height:36px;font-size:17px"><svg class="ico"><use href="#i-search"/></svg></div>Document and data audit</div>
+          <div><div class="circle" style="width:36px;height:36px;font-size:17px"><svg class="ico"><use href="#i-help"/></svg></div>Five Whys root cause analysis</div>
+          <div><div class="circle" style="width:36px;height:36px;font-size:17px"><svg class="ico"><use href="#i-file"/></svg></div>A structured proposal</div>
+        </div>
+      </div>
+      <div class="ladder">
+        <div class="rung"><div class="circle"><svg class="ico"><use href="#i-activity"/></svg></div><div><h4>Quick Diagnostic</h4><p>A fast read on where the friction is and whether there is a fit.</p></div></div>
+        <div class="rung"><div class="circle"><svg class="ico"><use href="#i-search"/></svg></div><div><h4>Full Diagnostic</h4><p>The complete interview, data and root cause sequence.</p></div></div>
+        <div class="rung"><div class="circle"><svg class="ico"><use href="#i-zap"/></svg></div><div><h4>Rapid Process Fix</h4><p>A targeted repair of the process that is costing you most.</p></div></div>
+        <div class="rung"><div class="circle"><svg class="ico"><use href="#i-shield"/></svg></div><div><h4>Full Stabilization Program</h4><p>A structured programme to steady the business end to end.</p></div></div>
+        <div class="rung"><div class="circle"><svg class="ico"><use href="#i-up"/></svg></div><div><h4>Revenue Growth Strategy</h4><p>Follows stabilization, once the foundations hold.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN MAP -->
+<section id="fit">
+  <div class="sec-head">
+    <div class="eyebrow">If you recognise any of these</div>
+    <h2>You're exactly who this is built for.</h2>
+    <p>Progreso has a structured engagement for each of these. Fixed fee, 4-week sprint, <b style="color:var(--ink)">measurable output.</b></p>
+  </div>
+  <div class="pain-grid">
+    <article class="card pain"><div class="circle"><svg class="ico"><use href="#i-shuffle"/></svg></div><h3>No clear direction</h3><p>Busy but not confident you're moving forward. Strategy is reactive, not intentional.</p><div class="to"><svg class="ico"><use href="#i-arrow"/></svg>The Blueprint</div></article>
+    <article class="card pain"><div class="circle"><svg class="ico"><use href="#i-repeat"/></svg></div><h3>Trapped in operations</h3><p>Everything runs through you. You can't step back, delegate, or scale without something breaking.</p><div class="to"><svg class="ico"><use href="#i-arrow"/></svg>Engine Room</div></article>
+    <article class="card pain"><div class="circle"><svg class="ico"><use href="#i-userx"/></svg></div><h3>Team isn't delivering</h3><p>Wrong people in wrong seats, or good people with no clear expectations or accountability.</p><div class="to"><svg class="ico"><use href="#i-arrow"/></svg>The Team</div></article>
+    <article class="card pain"><div class="circle"><svg class="ico"><use href="#i-down"/></svg></div><h3>Unpredictable revenue</h3><p>Your pipeline lives on referrals. When they dry up, so does the business.</p><div class="to"><svg class="ico"><use href="#i-arrow"/></svg>Market Maker</div></article>
+    <article class="card pain"><div class="circle"><svg class="ico"><use href="#i-logout"/></svg></div><h3>Clients don't stay</h3><p>You're good at winning work. Keeping it, building loyalty and repeat revenue, is a different problem.</p><div class="to"><svg class="ico"><use href="#i-arrow"/></svg>Keep Them</div></article>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section id="engagements" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Engagements</div>
+      <h2>Choose one node or bundle several.</h2>
+      <p>Every node is a 4-week sprint with a fixed fee, live coaching and implementation support built in. Each ends with tangible outputs, not a slide deck of suggestions.</p>
+    </div>
+
+    <div class="band compass" style="margin-left:0;margin-right:0;padding-left:34px;padding-right:34px">
+      <div>
+        <div class="circle"><svg class="ico"><use href="#i-compass"/></svg></div>
+        <h3>Business Compass</h3>
+        <p>A 5-dimension health assessment. Start here.</p>
+        <div class="meta"><span class="pill">10 hours</span><span class="pill">2 to 3 weeks</span><span class="pill">Fee credited to your first engagement</span></div>
+      </div>
+      <ul>
+        <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Business Health Report</li>
+        <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Gap Analysis</li>
+        <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Prioritised Roadmap Prescription</li>
+        <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Quick-Wins List (3 to 5 actions)</li>
+      </ul>
+    </div>
+
+    <div class="node-grid">
+      <article class="card node">
+        <div class="node-top"><div class="circle"><svg class="ico"><use href="#i-map"/></svg></div><div><h3>The Blueprint</h3><div class="focus">Strategy, goals &amp; 90-day execution planning</div></div></div>
+        <p class="for">For owners who are busy, but not moving forward.</p>
+        <hr>
+        <ul>
+          <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Vision-to-KPI Cascade</li>
+          <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Strategic Priority Pillars (3 to 5)</li>
+          <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>90-Day Execution Plan</li>
+        </ul>
+        <p class="roi"><b>Measured by</b> &nbsp;% of 90-day milestones achieved within 6 months</p>
+      </article>
+      <article class="card node">
+        <div class="node-top"><div class="circle"><svg class="ico"><use href="#i-settings"/></svg></div><div><h3>Engine Room</h3><div class="focus">Operations, systems &amp; owner time-freedom</div></div></div>
+        <p class="for">For owners trapped inside their business.</p>
+        <hr>
+        <ul>
+          <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Core Process Maps (5 processes)</li>
+          <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Standard Operating Procedures</li>
+          <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Delegation Matrix</li>
+        </ul>
+        <p class="roi"><b>Measured by</b> &nbsp;Owner hours per week reclaimed; reduction in operational rework</p>
+      </article>
+      <article class="card node">
+        <div class="node-top"><div class="circle"><svg class="ico"><use href="#i-users"/></svg></div><div><h3>The Team</h3><div class="focus">People, roles &amp; performance management</div></div></div>
+        <p class="for">Right people. Right seats. Actually performing.</p>
+        <hr>
+        <ul>
+          <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Org Structure Design</li>
+          <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Role Clarity Maps (outcomes-based)</li>
+          <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Performance Management Framework</li>
+        </ul>
+        <p class="roi"><b>Measured by</b> &nbsp;Staff turnover; performance review adoption; engagement baseline</p>
+      </article>
+      <article class="card node">
+        <div class="node-top"><div class="circle"><svg class="ico"><use href="#i-target"/></svg></div><div><h3>Market Maker</h3><div class="focus">Go-to-market, positioning &amp; pipeline</div></div></div>
+        <p class="for">Beyond referrals. A predictable pipeline.</p>
+        <hr>
+        <ul>
+          <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Ideal Client Profile (ICP)</li>
+          <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Positioning Statement</li>
+          <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Competitive Differentiation Map</li>
+        </ul>
+        <p class="roi"><b>Measured by</b> &nbsp;Qualified leads in 90 days; enquiry-to-client conversion rate</p>
+      </article>
+      <article class="card node">
+        <div class="node-top"><div class="circle"><svg class="ico"><use href="#i-heart"/></svg></div><div><h3>Keep Them</h3><div class="focus">Retention, LTV &amp; customer experience</div></div></div>
+        <p class="for">Win clients, then keep them coming back.</p>
+        <hr>
+        <ul>
+          <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Customer Journey Map</li>
+          <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Lifetime Value Model</li>
+          <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Service Standards Document</li>
+        </ul>
+        <p class="roi"><b>Measured by</b> &nbsp;Monthly churn; repeat contract rate; NPS</p>
+      </article>
+      <article class="card node">
+        <div class="node-top"><div class="circle"><svg class="ico"><use href="#i-buoy"/></svg></div><div><h3>Always On</h3><div class="focus">Ongoing strategic support, month to month</div></div></div>
+        <p class="for">Available at any stage: before, during or after.</p>
+        <hr>
+        <ul>
+          <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Monthly Strategy Review (1-hour call)</li>
+          <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Real-Time Access (WhatsApp + email)</li>
+          <li><svg class="ico" width="16" height="16"><use href="#i-check"/></svg>Quarterly Mini-Review</li>
+        </ul>
+        <p class="roi"><b>Terms</b> &nbsp;Month to month, no lock-in</p>
+      </article>
+    </div>
+
+    <div class="quoteonly">
+      <svg class="ico"><use href="#i-tag"/></svg>
+      <p>Every engagement is quoted as a fixed fee before you commit. Taking three or more nodes together earns a bundle discount. Ask on your discovery call.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENCE -->
+<section id="difference">
+  <div class="sec-head">
+    <div class="eyebrow">The Progreso difference</div>
+    <h2>Built so you know what you are buying before you start.</h2>
+  </div>
+  <div class="diff-grid">
+    <article class="card diff"><div class="circle"><svg class="ico"><use href="#i-tag"/></svg></div><h3>Fixed Fees</h3><p>No billable hours. No scope creep. You know the cost before you start.</p></article>
+    <article class="card diff"><div class="circle"><svg class="ico"><use href="#i-cal"/></svg></div><h3>4-Week Sprints</h3><p>Clear start, end, and output every time. No open-ended engagements.</p></article>
+    <article class="card diff"><div class="circle"><svg class="ico"><use href="#i-bars"/></svg></div><h3>Measured ROI</h3><p>A success metric is agreed upfront. If we can't measure it, we won't promise it.</p></article>
+    <article class="card diff"><div class="circle"><svg class="ico"><use href="#i-usercheck"/></svg></div><h3>Coaching + Delivery</h3><p>Implementation alongside you, not advice handed over and left to gather dust.</p></article>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section id="how" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">How it works</div>
+      <h2>Three steps, and the first one is free.</h2>
+    </div>
+    <div class="steps">
+      <article class="card step"><div class="circle"><svg class="ico"><use href="#i-phonecall"/></svg></div><span class="pill" style="align-self:flex-start">Free · 30 minutes · No obligation</span><h3>1. Discovery Call</h3><p>A focused diagnostic conversation. We find out where the friction is, and whether there's a fit. Not a sales pitch. If there's no fit, we'll say so.</p></article>
+      <article class="card step"><div class="circle"><svg class="ico"><use href="#i-compass"/></svg></div><span class="pill" style="align-self:flex-start">10 hours · 2 to 3 weeks</span><h3>2. Business Compass</h3><p>A 5-dimension health assessment producing a Business Health Report, Gap Analysis and Prioritised Roadmap. The fee is credited against your first engagement.</p></article>
+      <article class="card step"><div class="circle"><svg class="ico"><use href="#i-zap"/></svg></div><span class="pill" style="align-self:flex-start">4-week sprints · Fixed fee</span><h3>3. Your Engagement</h3><p>Choose one node or bundle several. Each sprint ends with tangible outputs, not a slide deck of suggestions. Coaching embedded throughout.</p></article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- CLOSE -->
+<footer class="band close" id="contact">
+  <div class="wrap">
+    <div class="close-grid">
+      <div>
+        <div class="eyebrow">Ready when you are</div>
+        <h2>Start with a free 30-minute call.</h2>
+        <p class="lead">Not a sales pitch. A straight conversation about where your business is, where it needs to go, and whether I can help you get there.</p>
+        <div class="hero-cta">
+          <a class="btn" href="mailto:jody@progreso.consulting?subject=Discovery%20call">Book your discovery call <svg class="ico" width="18" height="18"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="contact">
+        <div class="crow"><svg class="ico"><use href="#i-mail"/></svg><div><small>Email</small><span id="v-email">jody@progreso.consulting</span></div><button class="copy" type="button" data-copy="jody@progreso.consulting">Copy</button></div>
+        <div class="crow"><svg class="ico"><use href="#i-phone"/></svg><div><small>Phone</small><span id="v-phone">078 584 3558</span> <span style="color:var(--on-band-mute);font-size:13px">(+27 78 584 3558)</span></div><button class="copy" type="button" data-copy="078 584 3558">Copy</button></div>
+        <div class="crow"><svg class="ico"><use href="#i-linkedin"/></svg><div><small>LinkedIn</small><a href="https://linkedin.com/in/meetjodyblake" rel="noopener">linkedin.com/in/meetjodyblake</a></div></div>
+        <div class="crow"><svg class="ico"><use href="#i-pin"/></svg><div><small>Based in</small>Durban, KwaZulu-Natal · remote delivery nationally</div></div>
+      </div>
+    </div>
+    <div class="foot"><span>Progreso Solutions Consultancy · Jody Blake</span><span>Progreso Pty Ltd · Reg. 2025/885991/07</span></div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.getAttribute('data-copy'),old=b.textContent;
+    function done(){b.textContent='Copied';setTimeout(function(){b.textContent=old},1500)}
+    function fallback(){
+      var el=b.parentElement.querySelector('div span');
+      if(el){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+      b.textContent='Selected';setTimeout(function(){b.textContent=old},1500)
+    }
+    try{navigator.clipboard.writeText(t).then(done,fallback)}catch(e){fallback()}
+  })
+});
+</script>
+
+</body>
+</html>
