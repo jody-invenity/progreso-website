@@ -59,6 +59,18 @@ section{padding-block:72px}
 .hero-cta{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:34px}
 .hero-cta span{font-size:14px;color:var(--on-band-mute)}
 .motif{width:100%;max-width:340px;justify-self:end}
+.hero-photo{margin:0;justify-self:end;width:100%;max-width:400px;position:relative}
+.hero-photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:30% center;border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.hero-badge{position:absolute;left:-18px;bottom:28px;display:flex;align-items:center;gap:10px;background:#fff;color:var(--navy);border-radius:12px;padding:10px 14px;font-family:var(--display);font-weight:700;font-size:13px;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+
+/* Photo breaks */
+body{overflow-x:clip}
+.photo-break{position:relative;isolation:isolate;overflow:hidden;margin-inline:calc(50% - 50vw);min-height:clamp(320px,40vw,480px);display:grid;align-items:end}
+.photo-break img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;z-index:-2}
+.photo-break::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(8,26,62,.88) 0%,rgba(8,26,62,.4) 40%,rgba(8,26,62,0) 70%)}
+.photo-break .wrap{width:100%;padding:0 max(16px,env(safe-area-inset-left,0px)) 44px}
+.photo-break .eyebrow{color:#FFC37A;margin-bottom:10px}
+.photo-break .pb-line{font-family:var(--display);font-weight:800;color:#fff;font-size:clamp(22px,3.4vw,34px);line-height:1.2;max-width:760px;text-wrap:balance}
 
 /* Proof */
 .rating{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:6px;font-size:14px;color:var(--muted)}
@@ -88,6 +100,10 @@ section{padding-block:72px}
 .track b{display:block;font-family:var(--display);font-size:13px;color:var(--ink)}
 .track span{font-size:13.5px}
 .metrics{display:flex;flex-wrap:wrap;gap:8px}
+.method-head{display:grid;grid-template-columns:1fr 380px;gap:40px;align-items:end;margin-bottom:40px}
+.method-head .sec-head{margin-bottom:0}
+.method-photo{margin:0}
+.method-photo img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:14px;box-shadow:0 10px 30px var(--shadow)}
 
 /* Pain map */
 .pain-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
@@ -107,7 +123,8 @@ section{padding-block:72px}
 .compass .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .compass .meta .pill{background:rgba(255,255,255,.12);color:#fff}
 .node-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.node{display:flex;flex-direction:column;gap:14px}
+.node{display:flex;flex-direction:column;gap:14px;overflow:hidden}
+.node-img{display:block;margin:-22px -22px 4px;width:calc(100% + 44px);height:auto;max-width:none;aspect-ratio:16/7;object-fit:cover}
 .node-top{display:flex;gap:14px;align-items:center}
 .node h3{font-size:19px;font-weight:700}
 .node .focus{font-size:14px;color:var(--muted)}
@@ -151,6 +168,10 @@ section{padding-block:72px}
 @media (max-width:900px){
   .hero-grid,.method,.compass,.close-grid{grid-template-columns:1fr}
   .motif{justify-self:start;max-width:240px}
+  .hero-photo{justify-self:start;max-width:520px}
+  .hero-photo img{aspect-ratio:4/3}
+  .hero-badge{left:12px;bottom:12px}
+  .method-head{grid-template-columns:1fr}
   .proof-grid,.node-grid,.steps{grid-template-columns:1fr}
   .pain-grid,.diff-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
@@ -227,15 +248,10 @@ section{padding-block:72px}
           <span>Durban based. Remote delivery nationally.</span>
         </div>
       </div>
-      <svg class="motif" viewBox="0 0 340 300" role="img" aria-label="Ascending columns with an orbit ring">
-        <circle cx="170" cy="150" r="128" fill="none" stroke="#58A6FF" stroke-opacity=".25" stroke-width="1.5"/>
-        <circle cx="170" cy="150" r="88" fill="none" stroke="#58A6FF" stroke-opacity=".18" stroke-width="1.5"/>
-        <rect x="52" y="190" width="40" height="70" rx="10" fill="#58A6FF" fill-opacity=".30"/>
-        <rect x="112" y="150" width="40" height="110" rx="10" fill="#58A6FF" fill-opacity=".50"/>
-        <rect x="172" y="104" width="40" height="156" rx="10" fill="#58A6FF" fill-opacity=".75"/>
-        <rect x="232" y="46" width="40" height="214" rx="10" fill="#58A6FF"/>
-        <circle cx="252" cy="30" r="9" fill="#fff"/>
-      </svg>
+      <figure class="hero-photo">
+        <img src="images/hero.jpg" width="1400" height="1000" alt="A small business owner at work at her table in a sunlit studio">
+        <div class="hero-badge"><svg width="22" height="22" viewBox="0 0 38 38" aria-hidden="true"><rect x="4" y="22" width="7" height="12" rx="2" fill="#0E5FD8" opacity=".55"/><rect x="15.5" y="14" width="7" height="20" rx="2" fill="#0E5FD8" opacity=".8"/><rect x="27" y="4" width="7" height="30" rx="2" fill="#0E5FD8"/></svg>Fixed fee. Measurable output.</div>
+      </figure>
     </div>
   </div>
 </header>
@@ -289,10 +305,13 @@ section{padding-block:72px}
 <!-- METHOD -->
 <section id="method" class="alt">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">How the work is done</div>
-      <h2>Every engagement starts with a diagnosis, not an opinion.</h2>
-      <p>Before anything is recommended, the numbers and the people are examined in a fixed sequence. The same method runs behind every engagement.</p>
+    <div class="method-head">
+      <div class="sec-head">
+        <div class="eyebrow">How the work is done</div>
+        <h2>Every engagement starts with a diagnosis, not an opinion.</h2>
+        <p>Before anything is recommended, the numbers and the people are examined in a fixed sequence. The same method runs behind every engagement.</p>
+      </div>
+      <figure class="method-photo"><img src="images/method.jpg" width="1000" height="667" loading="lazy" alt="A team mapping problems on a sticky-note board during a diagnostic workshop"></figure>
     </div>
     <div class="method">
       <div class="card gate">
@@ -321,6 +340,12 @@ section{padding-block:72px}
     </div>
   </div>
 </section>
+
+<!-- PHOTO BREAK -->
+<div class="photo-break">
+  <img src="images/break-team.jpg" width="1800" height="1201" loading="lazy" alt="A small team working together around a wooden table">
+  <div class="wrap"><div class="eyebrow">Sound familiar?</div><p class="pb-line">You started the business to build something. Not to be the bottleneck in it.</p></div>
+</div>
 
 <!-- PAIN MAP -->
 <section id="fit">
@@ -364,6 +389,7 @@ section{padding-block:72px}
 
     <div class="node-grid">
       <article class="card node">
+        <img class="node-img" src="images/node-blueprint.jpg" width="800" height="533" loading="lazy" alt="Planning a strategy on a whiteboard">
         <div class="node-top"><div class="circle"><svg class="ico"><use href="#i-map"/></svg></div><div><h3>The Blueprint</h3><div class="focus">Strategy, goals &amp; 90-day execution planning</div></div></div>
         <p class="for">For owners who are busy, but not moving forward.</p>
         <hr>
@@ -375,6 +401,7 @@ section{padding-block:72px}
         <p class="roi"><b>Measured by</b> &nbsp;% of 90-day milestones achieved within 6 months</p>
       </article>
       <article class="card node">
+        <img class="node-img" src="images/node-engine-room.jpg" width="800" height="533" loading="lazy" alt="A craftsman at work on a busy workshop floor">
         <div class="node-top"><div class="circle"><svg class="ico"><use href="#i-settings"/></svg></div><div><h3>Engine Room</h3><div class="focus">Operations, systems &amp; owner time-freedom</div></div></div>
         <p class="for">For owners trapped inside their business.</p>
         <hr>
@@ -386,6 +413,7 @@ section{padding-block:72px}
         <p class="roi"><b>Measured by</b> &nbsp;Owner hours per week reclaimed; reduction in operational rework</p>
       </article>
       <article class="card node">
+        <img class="node-img" src="images/node-team.jpg" width="800" height="533" loading="lazy" alt="Three colleagues working through a plan together">
         <div class="node-top"><div class="circle"><svg class="ico"><use href="#i-users"/></svg></div><div><h3>The Team</h3><div class="focus">People, roles &amp; performance management</div></div></div>
         <p class="for">Right people. Right seats. Actually performing.</p>
         <hr>
@@ -397,6 +425,7 @@ section{padding-block:72px}
         <p class="roi"><b>Measured by</b> &nbsp;Staff turnover; performance review adoption; engagement baseline</p>
       </article>
       <article class="card node">
+        <img class="node-img" src="images/node-market-maker.jpg" width="800" height="533" loading="lazy" alt="Two people reviewing a proposal in a client meeting">
         <div class="node-top"><div class="circle"><svg class="ico"><use href="#i-target"/></svg></div><div><h3>Market Maker</h3><div class="focus">Go-to-market, positioning &amp; pipeline</div></div></div>
         <p class="for">Beyond referrals. A predictable pipeline.</p>
         <hr>
@@ -408,6 +437,7 @@ section{padding-block:72px}
         <p class="roi"><b>Measured by</b> &nbsp;Qualified leads in 90 days; enquiry-to-client conversion rate</p>
       </article>
       <article class="card node">
+        <img class="node-img" src="images/node-keep-them.jpg" width="800" height="533" loading="lazy" alt="A shopkeeper serving two happy customers">
         <div class="node-top"><div class="circle"><svg class="ico"><use href="#i-heart"/></svg></div><div><h3>Keep Them</h3><div class="focus">Retention, LTV &amp; customer experience</div></div></div>
         <p class="for">Win clients, then keep them coming back.</p>
         <hr>
@@ -419,6 +449,7 @@ section{padding-block:72px}
         <p class="roi"><b>Measured by</b> &nbsp;Monthly churn; repeat contract rate; NPS</p>
       </article>
       <article class="card node">
+        <img class="node-img" src="images/node-always-on.jpg" width="800" height="533" loading="lazy" alt="A business owner on a video call with his adviser">
         <div class="node-top"><div class="circle"><svg class="ico"><use href="#i-buoy"/></svg></div><div><h3>Always On</h3><div class="focus">Ongoing strategic support, month to month</div></div></div>
         <p class="for">Available at any stage: before, during or after.</p>
         <hr>
@@ -452,6 +483,12 @@ section{padding-block:72px}
   </div>
 </section>
 
+<!-- PHOTO BREAK -->
+<div class="photo-break">
+  <img src="images/break-planning.jpg" width="1800" height="1200" loading="lazy" alt="An owner and a consultant working through plans together at a table">
+  <div class="wrap"><div class="eyebrow">Not advice. Delivery.</div><p class="pb-line">Worked through with you, at your table, until it runs without you.</p></div>
+</div>
+
 <!-- STEPS -->
 <section id="how" class="alt">
   <div class="wrap">
@@ -481,6 +518,7 @@ section{padding-block:72px}
           <a class="btn" href="mailto:jody@progreso.consulting?subject=Discovery%20call">Book your discovery call <svg class="ico" width="18" height="18"><use href="#i-arrow"/></svg></a>
         </div>
       </div>
+      <!-- Space reserved: add a portrait of Jody here (e.g. images/jody.jpg) when available. -->
       <div class="contact">
         <div class="crow"><svg class="ico"><use href="#i-mail"/></svg><div><small>Email</small><span id="v-email">jody@progreso.consulting</span></div><button class="copy" type="button" data-copy="jody@progreso.consulting">Copy</button></div>
         <div class="crow"><svg class="ico"><use href="#i-phone"/></svg><div><small>Phone</small><span id="v-phone">078 584 3558</span> <span style="color:var(--on-band-mute);font-size:13px">(+27 78 584 3558)</span></div><button class="copy" type="button" data-copy="078 584 3558">Copy</button></div>
