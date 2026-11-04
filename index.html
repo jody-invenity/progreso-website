@@ -77,11 +77,11 @@ section{padding-block:72px}
 /* Method */
 .method{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .ladder{display:grid;gap:12px}
-.rung{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:18px 20px}
+.rung{display:flex;gap:16px;align-items:center;background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:18px 20px}
 .rung h4{font-size:15px;font-weight:700}
 .rung p{font-size:14.5px;margin-top:4px}
 .step-list{display:grid;gap:14px;margin-top:6px}
-.step-list div{display:flex;gap:14px;align-items:center;font-size:15px;color:var(--ink);font-weight:500}
+.step-list > div{display:flex;gap:14px;align-items:center;font-size:15px;color:var(--ink);font-weight:500}
 .gate{display:grid;gap:14px}
 .tracks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
 .track{background:var(--tint);border-radius:10px;padding:14px 16px}
@@ -91,10 +91,10 @@ section{padding-block:72px}
 
 /* Pain map */
 .pain-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
-.pain{display:flex;flex-direction:column;gap:12px;padding:20px 18px}
+.pain{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:20px 18px}
 .pain h3{font-size:15px;font-weight:700}
 .pain p{font-size:14px;flex:1}
-.pain .to{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:700;font-size:12.5px;color:var(--link);border-top:1px solid var(--rule);padding-top:12px}
+.pain .to{display:flex;align-items:center;justify-content:center;align-self:stretch;gap:8px;font-family:var(--display);font-weight:700;font-size:12.5px;color:var(--link);border-top:1px solid var(--rule);padding-top:12px}
 
 /* Offer */
 .compass{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;padding:34px;border-radius:14px;margin-bottom:22px}
@@ -123,11 +123,11 @@ section{padding-block:72px}
 
 /* Difference + steps */
 .diff-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.diff{display:flex;flex-direction:column;gap:12px}
+.diff{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
 .diff h3{font-size:16px}
 .diff p{font-size:14.5px}
 .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.step{display:flex;flex-direction:column;gap:12px}
+.step{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
 .step h3{font-size:18px}
 .step p{font-size:14.5px}
 .alt{background:var(--tint);margin-left:calc(-1 * max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1 * max(16px,env(safe-area-inset-right,0px)));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -460,9 +460,9 @@ section{padding-block:72px}
       <h2>Three steps, and the first one is free.</h2>
     </div>
     <div class="steps">
-      <article class="card step"><div class="circle"><svg class="ico"><use href="#i-phonecall"/></svg></div><span class="pill" style="align-self:flex-start">Free · 30 minutes · No obligation</span><h3>1. Discovery Call</h3><p>A focused diagnostic conversation. We find out where the friction is, and whether there's a fit. Not a sales pitch. If there's no fit, we'll say so.</p></article>
-      <article class="card step"><div class="circle"><svg class="ico"><use href="#i-compass"/></svg></div><span class="pill" style="align-self:flex-start">10 hours · 2 to 3 weeks</span><h3>2. Business Compass</h3><p>A 5-dimension health assessment producing a Business Health Report, Gap Analysis and Prioritised Roadmap. The fee is credited against your first engagement.</p></article>
-      <article class="card step"><div class="circle"><svg class="ico"><use href="#i-zap"/></svg></div><span class="pill" style="align-self:flex-start">4-week sprints · Fixed fee</span><h3>3. Your Engagement</h3><p>Choose one node or bundle several. Each sprint ends with tangible outputs, not a slide deck of suggestions. Coaching embedded throughout.</p></article>
+      <article class="card step"><div class="circle"><svg class="ico"><use href="#i-phonecall"/></svg></div><span class="pill">Free · 30 minutes · No obligation</span><h3>1. Discovery Call</h3><p>A focused diagnostic conversation. We find out where the friction is, and whether there's a fit. Not a sales pitch. If there's no fit, we'll say so.</p></article>
+      <article class="card step"><div class="circle"><svg class="ico"><use href="#i-compass"/></svg></div><span class="pill">10 hours · 2 to 3 weeks</span><h3>2. Business Compass</h3><p>A 5-dimension health assessment producing a Business Health Report, Gap Analysis and Prioritised Roadmap. The fee is credited against your first engagement.</p></article>
+      <article class="card step"><div class="circle"><svg class="ico"><use href="#i-zap"/></svg></div><span class="pill">4-week sprints · Fixed fee</span><h3>3. Your Engagement</h3><p>Choose one node or bundle several. Each sprint ends with tangible outputs, not a slide deck of suggestions. Coaching embedded throughout.</p></article>
     </div>
   </div>
 </section>
